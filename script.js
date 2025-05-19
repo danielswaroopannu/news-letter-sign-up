@@ -13,10 +13,12 @@ form.addEventListener("submit", (e) => {
 
   errorMessage.style.display = "none";
   errorMessage.textContent = "";
+  emailInput.classList.remove("error");
 
   if (emailValue === "") {
     errorMessage.textContent = "Please enter your email";
     errorMessage.style.display = "block";
+    emailInput.classList.add("error");
     return;
   }
 
@@ -24,6 +26,8 @@ form.addEventListener("submit", (e) => {
   if (!emailPattern.test(emailValue)) {
     errorMessage.textContent = "Valid email required";
     errorMessage.style.display = "block";
+    emailInput.classList.add("error");
+
     return;
   }
 
@@ -31,17 +35,14 @@ form.addEventListener("submit", (e) => {
 
   container.style.display = "none";
   successMessage.style.display = "block";
-
-  console.log(
-    "Thanks for subscribing! A confirmation email has been sent to ash@loremcompany.com. Please open it and click the button inside to confirm your subscription. Dismiss message"
-  );
 });
 
 dismissBtn.addEventListener("click", () => {
-    successMessage.style.display = "none"
-    container.style.display = "flex";
-    emailInput.value = "";
-    emailInput.focus();
-    errorMessage.style.display = "none";
-    errorMessage.textContent = "";
+  successMessage.style.display = "none";
+  container.style.display = "flex";
+  emailInput.value = "";
+  emailInput.focus();
+  errorMessage.style.display = "none";
+  errorMessage.textContent = "";
+  emailInput.classList.remove("error");
 });
